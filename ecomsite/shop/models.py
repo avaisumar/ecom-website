@@ -8,7 +8,8 @@ class Product(models.Model):
     discount_price = models.CharField(max_length=200)
     category = models.CharField(max_length=200)
     description = models.TextField()
-    image = models.CharField(max_length=300)
+    image=models.ImageField(null=True,blank=True,upload_to="images/")
+
 
 
 class Order(models.Model):

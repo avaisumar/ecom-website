@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +29,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 # Application definition
+
 
 INSTALLED_APPS = [
     'shop',
@@ -55,7 +60,7 @@ ROOT_URLCONF = 'ecomsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [r'C:\Users\AVAIS UMAR\PycharmProjects\djangoproj\ecomproj\ecomsite\shop\templates'],
+        'DIRS': [BASE_DIR/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -76,8 +81,13 @@ WSGI_APPLICATION = 'ecomsite.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        
+        'NAME': 'ecomm',
+        'USER': 'postgres',
+        'PASSWORD': 'superuser',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
